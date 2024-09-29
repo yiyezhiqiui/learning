@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <Sequence>
+            <RetryUntilSuccessful num_attempts="20">
+                <Condition ID="gIntDataInit" game_economy="{game_economy}" game_time="{game_time}" remaining_ammunition="{remaining_ammunition}" state_base="{state_base}" state_guard="{state_guard}" state_outpost="{state_outpost}" state_purchase="{state_purchase}"/>
+            </RetryUntilSuccessful>
+            <RetryUntilSuccessful num_attempts="20">
+                <Condition ID="alFloatDataInit" artificial_location_x="{artificial_location_x}" artificial_location_y="{artificial_location_y}"/>
+            </RetryUntilSuccessful>
+            <RetryUntilSuccessful num_attempts="20">
+                <Condition ID="pFloatDataInit" position_x="{position_x}" position_y="{position_y}"/>
+            </RetryUntilSuccessful>
+            <Sequence>
+                <Sequence>
+                    <Condition ID="autoResurrection" game_economy="{game_economy}" game_time="{game_time}" state_guard="{state_guard}"/>
+                    <Condition ID="autoPurchase" game_economy="{game_economy}" remaining_ammunition="{remaining_ammunition}"/>
+                </Sequence>
+                <Fallback>
+                    <Action ID="stateOutpostJudgement" state_outpost="{state_outpost}"/>
+                    <Inverter>
+                        <Condition ID="rotateArmor"/>
+                    </Inverter>
+                    <Condition ID="moveTo" destination_location_x="11.13" destination_location_y="12.14"/>
+                </Fallback>
+                <Sequence>
+                    <Fallback>
+                        <Action ID="purchaseJudgement" state_purchase="{state_purchase}"/>
+                        <Condition ID="moveTo" destination_location_x="11.13" destination_location_y="12.14"/>
+                    </Fallback>
+                    <Fallback>
+                        <Action ID="guardJudgement" state_guard="{state_guard}"/>
+                        <Condition ID="moveTo" destination_location_x="11.13" destination_location_y="12.14"/>
+                    </Fallback>
+                    <Fallback>
+                        <Action ID="artificialControlJudgement" artificial_location_x="{artificial_location_x}" artificial_location_y="{artificial_location_y}"/>
+                        <Condition ID="moveTo" destination_location_x="{artificial_location_x}" destination_location_y="{artificial_location_y}"/>
+                    </Fallback>
+                    <Sequence>
+                        <Fallback>
+                            <Action ID="gameTimeJudgement" before_time="0" game_time="{game_time}" late_time="60"/>
+                            <Condition ID="moveTo" destination_location_x="11.13" destination_location_y="12.14"/>
+                        </Fallback>
+                        <Fallback>
+                            <Action ID="gameTimeJudgement" before_time="60" game_time="{game_time}" late_time="420"/>
+                            <Condition ID="moveTo" destination_location_x="11.13" destination_location_y="12.14"/>
+                        </Fallback>
+                    </Sequence>
+                </Sequence>
+            </Sequence>
+        </Sequence>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Condition ID="alFloatDataInit">
+            <output_port default="0.0" name="artificial_location_x"/>
+            <output_port default="0.0" name="artificial_location_y"/>
+        </Condition>
+        <Action ID="artificialControlJudgement">
+            <input_port name="artificial_location_x"/>
+            <input_port name="artificial_location_y"/>
+        </Action>
+        <Condition ID="autoPurchase">
+            <input_port name="game_economy"/>
+            <input_port name="remaining_ammunition"/>
+        </Condition>
+        <Condition ID="autoResurrection">
+            <input_port name="game_economy"/>
+            <input_port name="game_time"/>
+            <input_port name="state_guard"/>
+        </Condition>
+        <Condition ID="gIntDataInit">
+            <output_port name="game_economy"/>
+            <output_port name="game_time"/>
+            <output_port name="remaining_ammunition"/>
+            <output_port name="state_base"/>
+            <output_port name="state_guard"/>
+            <output_port name="state_outpost"/>
+            <output_port name="state_purchase"/>
+        </Condition>
+        <Action ID="gameTimeJudgement">
+            <input_port name="before_time"/>
+            <input_port name="game_time"/>
+            <input_port name="late_time"/>
+        </Action>
+        <Action ID="guardJudgement">
+            <input_port name="state_guard"/>
+        </Action>
+        <Condition ID="moveTo">
+            <input_port name="destination_location_x"/>
+            <input_port name="destination_location_y"/>
+        </Condition>
+        <Condition ID="pFloatDataInit">
+            <output_port name="position_x"/>
+            <output_port name="position_y"/>
+        </Condition>
+        <Action ID="purchaseJudgement">
+            <input_port name="state_purchase"/>
+        </Action>
+        <Condition ID="rotateArmor"/>
+        <Action ID="stateOutpostJudgement">
+            <input_port name="state_outpost"/>
+        </Action>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>

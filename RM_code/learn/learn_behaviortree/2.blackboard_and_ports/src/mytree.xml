@@ -1,0 +1,9 @@
+<root BTCPP_format="4" >
+    <BehaviorTree ID="MainTree">
+       <Sequence name="root_sequence">
+          <Saysomething message="hello" test_out="hello_test" test_in=""/>
+          <ThinkWhatToSay text="{the_answer}" test="{the_answer_test}" />
+          <Saysomething message="{the_answer}" test_out="{the_answer_test}" test_in="456"/>
+       </Sequence>
+    </BehaviorTree>
+</root>

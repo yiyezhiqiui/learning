@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/ros/humble/include/**",
+                "/usr/include/**",
+                "/usr/local/**",
+                "${workspaceFolder}/shenzhen/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/**",
+                "${workspaceFolder}/shenzhen/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17"
+        }
+    ],
+    "version": 4
+}

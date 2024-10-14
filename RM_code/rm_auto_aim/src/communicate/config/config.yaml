@@ -1,0 +1,6 @@
+/**:
+  ros__parameters:
+    debug: false
+    enemy_team_color: 1   #敌方颜色 0：红 1：蓝
+    mode: 1               #模式 0：自瞄 1：符
+    rune_flag: 2          #符模式 0：不可激活 1：小符 2:大符

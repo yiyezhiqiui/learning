@@ -1,0 +1,17 @@
+uint8 red_1_robot_hp
+uint8 red_2_robot_hp
+uint8 red_3_robot_hp
+uint8 red_4_robot_hp
+uint8 red_5_robot_hp
+uint8 red_7_robot_hp
+uint8 red_outpost_hp
+uint8 red_base_hp
+
+uint8 blue_1_robot_hp
+uint8 blue_2_robot_hp
+uint8 blue_3_robot_hp
+uint8 blue_4_robot_hp
+uint8 blue_5_robot_hp
+uint8 blue_7_robot_hp
+uint8 blue_outpost_hp
+uint8 blue_base_hp

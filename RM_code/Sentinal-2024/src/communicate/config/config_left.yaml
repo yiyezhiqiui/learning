@@ -1,0 +1,5 @@
+/**:
+  ros__parameters:
+    debug: false
+    serial_name: "/dev/ttyACM0"
+    enemy_team_color: 1   #敌方颜色 0：红 1：蓝

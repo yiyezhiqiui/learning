@@ -1,0 +1,20 @@
+---
+Language: Cpp
+BasedOnStyle: Google
+
+# 设置缩进宽度为 4 个空格
+IndentWidth: 4
+AccessModifierOffset: -2
+AlignAfterOpenBracket: AlwaysBreak
+BraceWrapping:
+  AfterClass: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+BreakBeforeBraces: Custom
+ColumnLimit: 100
+ConstructorInitializerIndentWidth: 0
+ContinuationIndentWidth: 4
+DerivePointerAlignment: false
+PointerAlignment: Middle
+ReflowComments: false

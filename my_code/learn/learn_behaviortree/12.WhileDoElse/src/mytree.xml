@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="Untitled">
+    <Sequence>
+      <Init judge_num_in="1"
+            judge_num="{judge_num}"/>
+      <WhileDoElse>
+        <JudgeMent judge_num="1"/>
+        <Sequence>
+          <RateController hz="1">
+            <SaySomething message="This is first while&apos;s Do"/>
+          </RateController>
+          <SaySomethingInt message_num="{judge_num}"/>
+        </Sequence>
+        <Sequence>
+          <RateController hz="1">
+            <SaySomething message="This is first while&apos;s Else"/>
+          </RateController>
+          <SaySomethingInt message_num="{judge_num}"/>
+        </Sequence>
+      </WhileDoElse>
+      <WhileDoElse>
+        <JudgeMent judge_num="0"/>
+        <Sequence>
+          <RateController hz="1">
+            <SaySomething message="This is second while&apos;s Do"/>
+          </RateController>
+          <SaySomethingInt message_num="{judge_num}"/>
+        </Sequence>
+        <Sequence>
+          <RateController hz="1">
+            <SaySomething message="This is second while&apos;s Else"/>
+          </RateController>
+          <SaySomethingInt message_num="{judge_num}"/>
+        </Sequence>
+      </WhileDoElse>
+    </Sequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="Init"
+            editable="true">
+      <input_port name="judge_num_in"/>
+      <output_port name="judge_num"/>
+    </Action>
+    <Action ID="JudgeMent"
+            editable="true">
+      <input_port name="judge_num"/>
+    </Action>
+    <Decorator ID="RateController"
+               editable="true">
+      <input_port name="hz">Rate</input_port>
+    </Decorator>
+    <Action ID="SaySomething"
+            editable="true">
+      <input_port name="message"/>
+    </Action>
+    <Action ID="SaySomethingInt"
+            editable="true">
+      <input_port name="message_num"/>
+    </Action>
+  </TreeNodesModel>
+
+</root>

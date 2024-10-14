@@ -1,0 +1,7 @@
+int8 mode #模式 0：自瞄 1：符 
+int8 rune_state #符模式 0：不可激活 1：小符 2:大符
+int8 enemy_color #敌方颜色 0：红 1：蓝
+
+
+---
+bool success #返回是否成功

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="rm_robot"
+  xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <link name="base_link"/>
+  <link name="gimbal_link"/>
+  <link name="livox_frame" />
+
+  <!-- <joint name="base_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="gimbal_link"/>
+    <axis xyz="0 0 1"/>
+  </joint> -->
+
+  <joint name="livox_joint" type="fixed">
+    <origin xyz="0 0 -0.4545" rpy="0 0 0" />
+    <parent link="livox_frame" />
+    <child link="gimbal_link" />
+  </joint>
+  
+  <joint name="gimbal_joint" type="fixed">
+    <parent link="gimbal_link"/>
+    <child link="base_link"/>
+  </joint>
+</robot>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="Untitled">
+    <Sequence>
+      <SaySomething message="hello"/>
+      <numcount/>
+    </Sequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="SaySomething"
+            editable="true">
+      <input_port name="message"/>
+    </Action>
+    <Action ID="numcount"
+            editable="true"/>
+  </TreeNodesModel>
+
+</root>

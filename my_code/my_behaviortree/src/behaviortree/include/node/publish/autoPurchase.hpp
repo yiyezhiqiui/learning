@@ -15,4 +15,5 @@ public:
         const BT::RosNodeParams& params);
     static BT::PortsList providedPorts();
     bool setMessage(std_msgs::msg::Int32MultiArray& msg);
+    int message;
 };

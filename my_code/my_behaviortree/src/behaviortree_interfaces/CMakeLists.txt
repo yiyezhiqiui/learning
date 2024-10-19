@@ -15,6 +15,9 @@ find_package(std_msgs REQUIRED)
 
 set(msg_files
   "msg/AllRobotHP.msg"
+  "msg/SentryStatus.msg"
+  "msg/FirstAttackEnemy.msg"
+  "msg/EnemyInformation.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}

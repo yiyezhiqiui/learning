@@ -4,13 +4,16 @@
 #include <std_msgs/msg/int32_multi_array.hpp>
 #include <behaviortree_ros2/bt_topic_pub_node.hpp>
 
-class rotateArmor : public BT::RosTopicPubNode<std_msgs::msg::Int32MultiArray>
+namespace behaviortree
 {
-public:
-    rotateArmor(
-        const std::string &name,
-        const BT::NodeConfig &conf,
-        const BT::RosNodeParams &params);
-    static BT::PortsList providedPorts();
-    bool setMessage(std_msgs::msg::Int32MultiArray &msg);
-};
+    class rotateArmor : public BT::RosTopicPubNode<std_msgs::msg::Int32MultiArray>
+    {
+    public:
+        rotateArmor(
+            const std::string &name,
+            const BT::NodeConfig &conf,
+            const BT::RosNodeParams &params);
+        static BT::PortsList providedPorts();
+        bool setMessage(std_msgs::msg::Int32MultiArray &msg);
+    };
+}

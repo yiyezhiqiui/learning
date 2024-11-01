@@ -1,0 +1,15 @@
+ <root BTCPP_format="4" >
+        <BehaviorTree ID="MainTree">
+            <Sequence name="root_sequence">
+                <Fallback name="x_Fallback">
+                    <isXArrived name="isXArrived"/>
+                    <moveX      name="moveX"/>
+                </Fallback>
+                <Fallback name="y_Fallback">
+                    <isYArrived name="isYArrived"/>
+                    <moveY      name="moveY"/>
+                </Fallback>
+                <PrintPosition name="PrintPosition"/>
+            </Sequence>
+        </BehaviorTree>
+</root>

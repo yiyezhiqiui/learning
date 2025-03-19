@@ -4,17 +4,15 @@
 #include <behaviortree_cpp/bt_factory.h>
 #include <behaviortree_cpp/tree_node.h>
 
-class SaySomething : public BT::SyncActionNode
-{
+class SaySomething : public BT::SyncActionNode {
 public:
-    SaySomething(const std::string &name, const BT::NodeConfig &config);
-    static BT::PortsList providedPorts();
-    BT::NodeStatus tick() override;
+  SaySomething(const std::string &name, const BT::NodeConfig &config);
+  static BT::PortsList providedPorts();
+  BT::NodeStatus tick() override;
 };
-class ThinkWhatToSay : public BT::SyncActionNode
-{
+class ThinkWhatToSay : public BT::SyncActionNode {
 public:
-  ThinkWhatToSay(const std::string& name, const BT::NodeConfig& config);
+  ThinkWhatToSay(const std::string &name, const BT::NodeConfig &config);
   static BT::PortsList providedPorts();
   BT::NodeStatus tick() override;
 };

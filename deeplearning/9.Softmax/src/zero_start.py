@@ -17,6 +17,7 @@ X = torch.tensor([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
 print("X.sum:", X.sum(0, keepdim=True), "\n", X.sum(1, keepdim=True))
 
 
+# 返回的是每个类别的概率
 def softmax(x):
     X_exp = torch.exp(x)
     partition = X_exp.sum(1, keepdim=True)
@@ -46,7 +47,9 @@ print("cross_entropy: ", cross_entropy(y_hat, y))
 
 def accuracy(y_hat, y):
     if len(y_hat.shape) > 1 and y_hat.shape[1] > 1:
+        # y_hat是1*批量大小(256)的张量
         y_hat = y_hat.argmax(axis=1)
+    # cmp是1*批量大小(256)的张量,存放True，False，代表每张图片是否预测准确
     cmp = y_hat.type(y.dtype) == y
     return float(cmp.type(y.dtype).sum())
 
@@ -57,8 +60,13 @@ print("accuracy: ", accuracy(y_hat, y) / len(y))
 def evaluate_accuracy(net, data_iter):
     if isinstance(net, torch.nn.Module):
         net.eval()
+    # 预测值和真实值相比的准确率  当前处理的样本总数(图片数)
     metric = Accumulator(2)
-    for X, y in data_iter:
+    # X是批量大小(256)*图片大小(784)的张量  y是1*批量大小(256)的张量
+    for (
+        X,
+        y,
+    ) in data_iter:
         metric.add(accuracy(net(X), y), y.numel())
     return metric[0] / metric[1]
 
@@ -83,6 +91,7 @@ print("evaluate_accuracy: ", evaluate_accuracy(net, test_iter))
 def train_epoch_ch3(net, train_iter, loss, updater):
     if isinstance(net, torch.nn.Module):
         net.train()
+    # 所有样本的损失总和 预测值和真实值相比的准确率  当前处理的样本总数(图片数)
     metric = Accumulator(3)
     for X, y in train_iter:
         y_hat = net(X)
@@ -117,7 +126,7 @@ class Animator:  # @save
         # 增量地绘制多条线
         if legend is None:
             legend = []
-        d2l.use_svg_display()
+        # d2l.use_svg_display()
         self.fig, self.axes = d2l.plt.subplots(nrows, ncols, figsize=figsize)
         if nrows * ncols == 1:
             self.axes = [
@@ -168,7 +177,7 @@ def train_ch3(net, train_iter, test_iter, loss, num_ephchs, updater):
     train_loss, train_acc = train_metrics
 
 
-lr = 0.1
+lr = 0.1 #学习率
 
 
 def updater(batch_size):

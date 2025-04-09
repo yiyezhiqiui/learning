@@ -231,8 +231,8 @@ def train_and_pred(
     # 将网络应用于测试集。
     preds = net(test_features).detach().numpy()
     # 将其重新格式化以导出到Kaggle
-    test_data["SalePrice"] = pd.Series(preds.reshape(1, -1)[0])
-    submission = pd.concat([test_data["Id"], test_data["SalePrice"]], axis=1)
+    test_data["Sold Price"] = pd.Series(preds.reshape(1, -1)[0])
+    submission = pd.concat([test_data["Id"], test_data["Sold Price"]], axis=1)
     submission.to_csv("submission.csv", index=False)
 
 

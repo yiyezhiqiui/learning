@@ -4,3 +4,5 @@ install/
 *.jpg
 *.mp4
 data/
+img/
+dataCI/
